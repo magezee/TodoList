@@ -25,15 +25,39 @@ export default class TodoService {
         }
     }
     
+    // 获取用户的所有todo
     public async getAllTodos(userId: string) {
         try {
             const res = await User.findById(userId).populate('todos')
-        } catch {
-            
+            return res?.todos
+        } catch(error) {
+            throw new Error('获取失败')
         }
     }
 
+    // 更改todo的状态
+    public async updateTodoStatus(todoId: string) {
+        try {
+            const oldRecord = await Todo.findById(todoId)
+            const record = await Todo.findByIdAndUpdate(todoId, {
+                status: !oldRecord?.status      // 将todo的status状态取反
+            })
+            return record
+        } catch(error) {
+            throw new Error('更新状态失败')
+        }
+    }
 
+    // 更改todo的内容
+    public async updataTodoContent(todoId: string, content: string) {
+        try{
+            return await Todo.findByIdAndUpdate(todoId, {content})
+        } catch {
+            throw new Error('更新内容失败')
+        }
+    }
+
+ 
 
 
 }
