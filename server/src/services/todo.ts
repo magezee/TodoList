@@ -50,14 +50,24 @@ export default class TodoService {
 
     // 更改todo的内容
     public async updataTodoContent(todoId: string, content: string) {
-        try{
+        try {
             return await Todo.findByIdAndUpdate(todoId, {content})
         } catch {
             throw new Error('更新内容失败')
         }
     }
 
- 
-
+    // 通过关键字搜索todo
+    public async searchTodo(userId: string, query: string) {
+        try {
+            return await User.findById(userId).populate({
+                path: 'todos',
+                match: { content: {$regex: new RegExp(query), $options: 'i'}}
+            })
+        } catch(error) {
+            console.log(error)
+            throw new Error('查询失败')
+        }
+    }
 
 }
