@@ -1,15 +1,23 @@
-// /src/app.ts
-import Koa from 'koa';
-import Router from 'koa-router'
+import Koa from 'koa'
+import bodyParser from 'koa-bodyparser'
+import cors from 'koa2-cors'
 
-const router = new Router()
-const app = new Koa();
+import Config from './config'
+import connectDB from './db'
+import todoRouter from './routes/todo'
+import userRouter from './routes/user'
 
-router.get('/',async (ctx) => {
-    ctx.body = '测'
+
+const app = new Koa()
+
+connectDB(Config.MONGODB_URL)
+
+app
+    .use(cors())
+    .use(bodyParser())
+    .use(userRouter.routes())
+    .use(todoRouter.routes())
+
+app.listen(Config.PORT, () => {
+    console.log(`Server ready at htttp://localhost:${Config.PORT}`)
 })
-
-app.use(router.routes())
-
-
-app.listen(3000)
