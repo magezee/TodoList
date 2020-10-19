@@ -3,7 +3,7 @@ import {
     IUserState,
     LOGIN,
     REGISTER,
-    LOGIN_SUC,
+    LOGOUT,
     KEEP_LOGIN,
 } from './types';
 
@@ -18,7 +18,7 @@ export const register = (authState: IAuthState) => ({
 });
 
 export const logout = () => ({
-    type: LOGIN,
+    type: LOGOUT
 });
 
 export const keepLogin = (userState: IUserState) => ({
