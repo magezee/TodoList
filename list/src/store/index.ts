@@ -6,9 +6,15 @@ const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = () => {
     return
-};
+}
+
+function* rootSaga() {
+    return
+}
 
 export const store = createStore(
     rootReducer,
     composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
+
+sagaMiddleware.run(rootSaga);
