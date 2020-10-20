@@ -15,4 +15,6 @@ export const store = createStore(
     composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 
+export type AppStore = ReturnType<typeof rootReducer>;
+
 sagaMiddleware.run(rootSaga);
