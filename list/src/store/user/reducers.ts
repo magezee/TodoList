@@ -24,7 +24,6 @@ export default function userReducer(
             // 虽然计划是action.payload已经包含所有的state信息，和state略为重复，但是重新传一次state表示和原有的state有联系，显得严谨
             // 后面同名的属性传值会覆盖之前的
             return {
-                
                 ...state,           
                 ...action.payload,
             };

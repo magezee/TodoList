@@ -4,13 +4,11 @@ import {Route, Switch, BrowserRouter, Redirect} from 'react-router-dom'
 import Index from './views//Index'
 import Todo from './views/Todo'
 
-
 function App() {
     return (    
         <React.Fragment>    
 			<BrowserRouter>
 				<Switch>
-					
 					<Route path="/todo" component={Todo} />
                     <Route path="/" component={Index} />
 				</Switch>
