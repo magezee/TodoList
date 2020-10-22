@@ -4,7 +4,10 @@ import { connect, ConnectedProps } from "react-redux"; 			// TS需要引入传�
 
 import { LocalStorage } from "../../utils";
 import { AppStore } from "../../store";
-import { keepLogin } from "../../store/user/action";
+import { keepLogin } from "../../store/user/actions";
+import LoginForm from '../../components/LoginForm';
+import RegForm from '../../components/RegForm';
+import styles from './index.module.scss'
 
 // 对redux的映射
 const mapState = ({ user }: AppStore) => ({
@@ -41,9 +44,25 @@ const Home: FC<RouteComponentProps & PropsFromRedux> = ({
 
 	const toggleForm = () => {
 		setShowLogin(!showLogin);
+		let a = document.getElementById('a')
+		console.log(a)
+		
 	};
 
-	return <div></div>;
+	return (
+		<div className={styles.wrapper}>
+			<div className={styles.container}>
+				<h1>Todo List</h1>
+				{showLogin ? <LoginForm/> : <RegForm/>} 
+				<p className={styles.tip}>
+					<span>Or&nbsp;&nbsp;</span>
+					<span onClick={toggleForm}>
+						{showLogin ? '现在注册!' : '已有账号!'}
+					</span>
+				</p>
+			</div>
+		</div>
+	);
 };
 
 export default connector(withRouter(Home));

@@ -4,28 +4,30 @@ import { Store } from 'antd/lib/form/interface';       // antD表单内的数据
 import React, { FC } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 
-import { login } from '../../store/user/actions';
+import { register } from '../../store/user/actions';
 
 const mapDispatch = {
-    login,  
+    register,  
 };
 
 const connector = connect(() => ({}), mapDispatch);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-interface ILoginForm extends PropsFromRedux {}
+interface IRegForm extends PropsFromRedux {}
 
-const LoginForm: FC<ILoginForm> = ({ login }) => {
+const RegForm: FC<IRegForm> = ({ register }) => {
+    const [form] = Form.useForm();
     const onFinish = (values: Store) => {
         const { username, password } = values;
-        login({
+        register({
             username,
             password,
         });
+        form.setFieldsValue({ username:'', password: '' })      // 注册成功后将表单value清空
     };
 
     return (
-        <Form onFinish={onFinish}>
+        <Form onFinish={onFinish} form={form}>
             <Form.Item
                 name="username"
                 rules={[{ required: true, message: '请输入用户名!'}]}
@@ -44,11 +46,11 @@ const LoginForm: FC<ILoginForm> = ({ login }) => {
             </Form.Item>
             <Form.Item>
                 <Button type="primary" htmlType="submit">
-                    登录
+                    注册
                 </Button>
             </Form.Item>
         </Form>
     )
 }
 
-export default connector(LoginForm);
+export default connector(RegForm);
