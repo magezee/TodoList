@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { withRouter, RouteComponentProps } from "react-router"; // TS需要引入传入的props类型
+import { RouteComponentProps } from "react-router"; // TS需要引入传入的props类型
 import { connect, ConnectedProps } from "react-redux"; 			// TS需要引入传入的props类型
 
 import { LocalStorage } from "../../utils";
@@ -65,4 +65,4 @@ const Home: FC<RouteComponentProps & PropsFromRedux> = ({
 	);
 };
 
-export default connector(withRouter(Home));
+export default connector(Home);

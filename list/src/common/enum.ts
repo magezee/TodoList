@@ -1,1 +1,5 @@
-export default {}
+export enum ModalType {
+    Edit = 'EDIT',
+    Add = 'ADD',
+}
+  

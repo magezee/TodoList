@@ -11,7 +11,7 @@ import {
 
 const initialState: ITodoState[] = [];
 
-export default function rodoReducer(
+export default function todoReducer(
     state = initialState,
     action: TodoActionTypes
 ) {
@@ -23,9 +23,9 @@ export default function rodoReducer(
         case DELETE_TODO_SUC:
             return state.filter((v) => v._id !== action.payload.todoId);    // 通过生成一个没有指定id的数组来实现删除效果
         case UPDATE_TODO_STATUS_SUC:
-            return state.map((v) => {
-                v._id === action.payload.todoId ? {...v, status: !v.status} : v
-            });
+            return state.map((v) => 
+               v._id === action.payload.todoId ? { ...v, status: !v.status } : v
+            );
         case SEARCH_TODO_SUC: 
             return [...initialState, ...action.payload];
         case UPDATE_TODO_CONTENT_SUC:

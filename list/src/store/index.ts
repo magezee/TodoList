@@ -4,10 +4,12 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootSaga from '../saga';
 import userReducer from './user/reducers';
+import todoReducer from './todo/reducers';
 
 const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
     user: userReducer,
+    todo: todoReducer,
 });
 
 export const store = createStore(

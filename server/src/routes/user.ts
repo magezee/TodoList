@@ -12,7 +12,7 @@ const userRouter = new Router({
 
 userRouter
     // 用户登入
-    .post('login', async (ctx: Context) => {
+    .post('/login', async (ctx: Context) => {
         const payload = ctx.request.body
         const { username, password } = payload
         try {
