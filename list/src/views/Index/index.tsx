@@ -43,10 +43,7 @@ const Home: FC<RouteComponentProps & PropsFromRedux> = ({
 	},[user])
 
 	const toggleForm = () => {
-		setShowLogin(!showLogin);
-		let a = document.getElementById('a')
-		console.log(a)
-		
+		setShowLogin(!showLogin);		
 	};
 
 	return (
