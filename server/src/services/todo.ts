@@ -62,7 +62,7 @@ export default class TodoService {
         try {
             return await User.findById(userId).populate({
                 path: 'todos',
-                match: { content: {$regex: new RegExp(query), $options: 'i'}}
+                match: { content: { $regex: new RegExp(query), $options: 'i' } },
             })
         } catch(error) {
             console.log(error)

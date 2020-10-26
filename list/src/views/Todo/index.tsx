@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 import { Button, Empty, Input } from 'antd';
 
 import { ModalType } from '../../common/enum';

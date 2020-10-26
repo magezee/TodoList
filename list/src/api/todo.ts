@@ -1,4 +1,3 @@
-import Todo from '../views/Todo';
 import request from './request';
 
 class TodoAPI {

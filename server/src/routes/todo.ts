@@ -13,9 +13,11 @@ const todoRouter = new Router({
 todoRouter
     // 关键字查找todo
     .get('/search', async (ctx: Context) => {
+        console.log(ctx.query)
         const { userId, query } = ctx.query
         try {
             const data = await todoService.searchTodo(userId, query)
+            console.log(data)
             if(data) {
                 createRes({ ctx, data })  // 将拿到的返回数据传入再处理方法
             }
@@ -80,8 +82,9 @@ todoRouter
     })
 
     // 删除todo
-    .delete('/:todoId', async (ctx:Context) => {
-        const todoId = ctx.parmas.todoId
+    .delete('/:todoId', async (ctx:Context) => 
+    {   
+        const todoId = ctx.params.todoId
         try {
             const data = await todoService.deleteTodo(todoId)
             if(data) {

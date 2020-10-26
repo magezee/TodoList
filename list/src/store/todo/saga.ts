@@ -58,7 +58,7 @@ export function* searchTodo(action: ISearchAction) {
     const res: IRes = yield call(todoAPI.searchTodo, userId, query);
     yield put({
         type: SEARCH_TODO_SUC,
-        payload: res.data,
+        payload: res.data.todos,
     });
 }
 

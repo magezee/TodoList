@@ -17,6 +17,7 @@ export default function todoReducer(
 ) {
     switch (action.type) {
         case ADD_TODO_SUC:
+            console.log(action.payload)
             return [...state, action.payload];
         case FETCH_TODO_SUC:
             return [...action.payload];
@@ -27,7 +28,7 @@ export default function todoReducer(
                v._id === action.payload.todoId ? { ...v, status: !v.status } : v
             );
         case SEARCH_TODO_SUC: 
-            return [...initialState, ...action.payload];
+            return [...action.payload];
         case UPDATE_TODO_CONTENT_SUC:
             return state.map((v) => 
                 v._id === action.payload.todoId
