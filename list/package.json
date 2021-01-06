@@ -15,7 +15,7 @@
     "@types/redux": "^3.6.0",
     "@types/redux-saga": "^0.10.5",
     "antd": "^4.4.2",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "babel-plugin-import": "^1.13.0",
     "customize-cra": "^1.0.0",
     "node-sass": "^4.14.0",
